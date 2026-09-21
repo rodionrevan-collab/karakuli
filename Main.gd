@@ -114,8 +114,6 @@ func _build_ui() -> void:
 		slot.alignment = HORIZONTAL_ALIGNMENT_CENTER
 		slot.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		slot.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-		slot.icon_max_width = 78
-		slot.expand_icon = true
 		slot.pressed.connect(_on_slot_pressed.bind(i))
 		slots.append(slot)
 		grid.add_child(slot)
