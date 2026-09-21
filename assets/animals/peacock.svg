@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120">
+<g fill="none" stroke="#2b2927" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<path fill="#7fb6d8" d="M76 78c-8-18-3-33 11-40 8-4 17-4 24 1 5-10 14-17 23-13 8 4 8 13 2 18 10 6 15 15 13 25-4 18-25 26-44 24-15-1-24-6-29-15z"/>
+<path fill="#7fb6d8" d="M92 39c-8-22-2-35 8-41 8 6 14 18 10 36M104 37c4-23 14-34 26-35 4 11 0 25-13 36M113 45c12-18 25-23 35-18-1 13-13 24-29 26M83 45c-12-17-25-21-35-14 2 12 14 21 30 23"/>
+<circle cx="78" cy="25" r="7" fill="#f3d16f"/><circle cx="78" cy="25" r="2" fill="#2b2927"/>
+<circle cx="126" cy="25" r="7" fill="#f3d16f"/><circle cx="126" cy="25" r="2" fill="#2b2927"/>
+<circle cx="140" cy="51" r="7" fill="#f3d16f"/><circle cx="140" cy="51" r="2" fill="#2b2927"/>
+<circle cx="55" cy="53" r="7" fill="#f3d16f"/><circle cx="55" cy="53" r="2" fill="#2b2927"/>
+<circle cx="101" cy="50" r="3" fill="#2b2927"/>
+<path d="M95 84l-1 23M112 84l3 22M94 107h-8M115 106h8"/>
+<path d="M65 74c7 4 13 8 18 15M72 65c6 5 11 10 14 16M120 72c6-3 11-6 15-11"/>
+</g></svg>
