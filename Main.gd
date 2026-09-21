@@ -2,19 +2,21 @@ extends Node2D
 
 const SAVE_PATH: String = "user://karakuli_farm.cfg"
 const SLOT_COUNT: int = 20
-const MAX_TIER: int = 15
+const MAX_TIER: int = 23
 const FIELD_SIZE: Vector2 = Vector2(900, 560)
 const MERGE_DISTANCE: float = 78.0
 
 var animal_names: Array[String] = [
 	"Курица", "Утка", "Свинка", "Корова", "Овечка", "Лошадь", "Козочка", "Павлин",
-	"Кролик", "Индюк", "Лама", "Лисичка", "Собака", "Кошка", "Лягушка", "Олень"
+	"Кролик", "Индюк", "Лама", "Лисичка", "Собака", "Кошка", "Лягушка", "Олень",
+	"Волк", "Панда", "Пингвин", "Жираф", "Слон", "Бегемот", "Обезьяна", "Тигр"
 ]
 var animal_files: Array[String] = [
 	"chicken", "duck", "pig", "cow", "sheep", "horse", "goat", "peacock",
-	"rabbit", "turkey", "llama", "fox", "dog", "cat", "frog", "deer"
+	"rabbit", "turkey", "llama", "fox", "dog", "cat", "frog", "deer",
+	"wolf", "panda", "penguin", "giraffe", "elephant", "hippo", "monkey", "tiger"
 ]
-var animal_rewards: Array[int] = [2, 3, 5, 8, 12, 18, 26, 38, 55, 75, 100, 135, 180, 240, 320, 450]
+var animal_rewards: Array[int] = [2, 3, 5, 8, 12, 18, 26, 38, 55, 75, 100, 135, 180, 240, 320, 450, 600, 800, 1050, 1400, 1850, 2400, 3200, 4200]
 
 var slot_positions: Array[Vector2] = [
 	Vector2(120, 110), Vector2(292, 104), Vector2(468, 114), Vector2(646, 108), Vector2(792, 120),
@@ -374,10 +376,8 @@ func _on_slot_gui_input(event: InputEvent, index: int) -> void:
 			drag_offset = mouse_event.position
 			selected_slot = index
 			_refresh_ui()
-			accept_event()
 		elif mouse_event.button_index == MOUSE_BUTTON_LEFT and not mouse_event.pressed and dragging_index == index:
 			_drop_animal(index)
-			accept_event()
 	elif event is InputEventMouseMotion and dragging_index == index:
 		var mouse_pos: Vector2 = get_local_mouse_position_for_field(slots[index].get_parent())
 		var desired: Vector2 = mouse_pos - drag_offset
@@ -385,7 +385,6 @@ func _on_slot_gui_input(event: InputEvent, index: int) -> void:
 		desired.y = clamp(desired.y, 70.0, FIELD_SIZE.y - slots[index].size.y - 10.0)
 		positions[index] = desired
 		slots[index].position = desired
-		accept_event()
 
 func get_local_mouse_position_for_field(field: Node) -> Vector2:
 	var local: Vector2 = field.get_global_mouse_position()
