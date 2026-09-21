@@ -111,6 +111,11 @@ func _build_ui() -> void:
 		slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		slot.focus_mode = Control.FOCUS_NONE
 		slot.add_theme_font_size_override("font_size", 18)
+		slot.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		slot.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		slot.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+		slot.icon_max_width = 78
+		slot.expand_icon = true
 		slot.pressed.connect(_on_slot_pressed.bind(i))
 		slots.append(slot)
 		grid.add_child(slot)
@@ -167,6 +172,12 @@ func _build_ui() -> void:
 	save_button.pressed.connect(_save_game)
 	side_box.add_child(save_button)
 
+func _animal_file(tier: int) -> String:
+	var files: Array[String] = [
+		"chicken", "duck", "pig", "cow", "sheep", "horse", "goat", "peacock"
+	]
+	return files[clamp(tier, 0, files.size() - 1)]
+
 func _title_label(text_value: String, font_size: int) -> Label:
 	var label: Label = Label.new()
 	label.text = text_value
@@ -207,11 +218,13 @@ func _refresh_ui() -> void:
 		slot.remove_theme_stylebox_override("pressed")
 
 		if animals[i] < 0:
+			slot.icon = null
 			slot.text = "ПУСТОЕ МЕСТО\n\n＋"
 			slot.add_theme_stylebox_override("normal", _slot_style(Color("#e9ddbd"), Color("#7a6c5b"), 2))
 			slot.add_theme_stylebox_override("hover", _slot_style(Color("#f2e8cf"), Color("#3f3934"), 3))
 		else:
 			var tier: int = animals[i]
+			slot.icon = load("res://assets/animals/%s.svg" % _animal_file(tier)) as Texture2D
 			slot.text = "%s\n\nуровень %d" % [animal_names[tier], tier + 1]
 			var discovered_color: Color = Color("#fffdf5")
 			if tier >= 3:
