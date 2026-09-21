@@ -59,18 +59,18 @@ func _build_ui() -> void:
 
 	var header_box: HBoxContainer = HBoxContainer.new()
 	header_box.add_theme_constant_override("separation", 14)
-	header.add_theme_constant_override("margin_left", 18)
-	header.add_theme_constant_override("margin_right", 18)
-	header.add_theme_constant_override("margin_top", 10)
-	header.add_theme_constant_override("margin_bottom", 10)
-	header.add_child(_title_label("КАРАКУЛИ ФЕРМА", 30))
+	header_box.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	header_box.add_theme_constant_override("margin_left", 18)
+	header_box.add_theme_constant_override("margin_right", 18)
+	header_box.add_theme_constant_override("margin_top", 10)
+	header_box.add_theme_constant_override("margin_bottom", 10)
+	header.add_child(header_box)
+	header_box.add_child(_title_label("КАРАКУЛИ ФЕРМА", 30))
 	header_box.add_spacer(false)
 
 	coins_label = _title_label("Монетки: 30", 22)
 	coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	header_box.add_child(coins_label)
-
-	header.add_child(header_box)
 
 	var content: HBoxContainer = HBoxContainer.new()
 	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
